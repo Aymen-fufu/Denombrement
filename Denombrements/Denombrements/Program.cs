@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**
+* titre : Denobrement
+* description :
+* auteur : Fufu
+* date création :
+* date dernière modification :
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +15,18 @@ namespace Denombrements
 {
     class Program
     {
+        static int t, n;
+
+        static void Saisie()
+        {
+            Console.Write("nombre total d'éléments à gérer = "); // le nombre d'éléments à gérer
+            int t = int.Parse(Console.ReadLine()); // saisir le nombre
+            Console.Write("nombre d'éléments dans le sous ensemble = "); // le sous ensemble
+            int n = int.Parse(Console.ReadLine()); // saisir le nombre
+        }
+
+
+
         static void Main(string[] args)
         {
             int c = 1;
@@ -26,7 +45,7 @@ namespace Denombrements
                 {
                     Console.Write("nombre total d'éléments à gérer = "); // le nombre d'éléments à gérer
                     int n = int.Parse(Console.ReadLine()); // saisir le nombre
-                                                           // calcul de r
+                     // calcul de r
                     long r = 1;
                     for (int k = 1; k <= n; k++)
                         r *= k;
@@ -36,10 +55,7 @@ namespace Denombrements
                 {
                     if (c == 2)
                     {
-                        Console.Write("nombre total d'éléments à gérer = "); // le nombre d'éléments à gérer
-                        int t = int.Parse(Console.ReadLine()); // saisir le nombre
-                        Console.Write("nombre d'éléments dans le sous ensemble = "); // le sous ensemble
-                        int n = int.Parse(Console.ReadLine()); // saisir le nombre
+                        Saisie();
                         // calcul de r
                         long r = 1;
                         for (int k = (t - n + 1); k <= t; k++)
@@ -49,10 +65,7 @@ namespace Denombrements
                     }
                     else
                     {
-                        Console.Write("nombre total d'éléments à gérer = "); // le nombre d'éléments à gérer
-                        int t = int.Parse(Console.ReadLine()); // saisir le nombre
-                        Console.Write("nombre d'éléments dans le sous ensemble = "); // le sous ensemble
-                        int n = int.Parse(Console.ReadLine()); // saisir le nombre
+                        Saisie();
                         // calcul de r1
                         long r1 = 1;
                         for (int k = (t - n + 1); k <= t; k++)
