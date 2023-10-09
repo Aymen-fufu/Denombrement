@@ -15,16 +15,22 @@ namespace Denombrements
 {
     class Program
     {
-        static int t, n;
-
-        static void Saisie()
+   
+        static long Calcul( int choix, int n, int t)
         {
-            Console.Write("nombre total d'éléments à gérer = "); // le nombre d'éléments à gérer
-            int t = int.Parse(Console.ReadLine()); // saisir le nombre
-            Console.Write("nombre d'éléments dans le sous ensemble = "); // le sous ensemble
-            int n = int.Parse(Console.ReadLine()); // saisir le nombre
+            long r = 1;
+            if (choix == 1)
+            {
+                for (int k = 1; k <= n; k++)
+                        r *= k;
+            }
+            else
+            {
+                for (int k = (t - n + 1); k <= t; k++)
+                            r *= k;
+            }
+            return r;
         }
-
 
 
         static void Main(string[] args)
@@ -38,45 +44,35 @@ namespace Denombrements
                 Console.WriteLine("Quitter .......................... 0");
                 Console.Write("Choix :                            ");
                 c = int.Parse(Console.ReadLine());
-
+                    
                 if (c == 0) { Environment.Exit(0); }
-
+                
+                Console.Write("nombre total d'éléments à gérer = "); // le nombre d'éléments à gérer
+                int t = int.Parse(Console.ReadLine()); // saisir le nombre
                 if (c == 1)
                 {
-                    Console.Write("nombre total d'éléments à gérer = "); // le nombre d'éléments à gérer
-                    int n = int.Parse(Console.ReadLine()); // saisir le nombre
+                    int n = 0;
                      // calcul de r
-                    long r = 1;
-                    for (int k = 1; k <= n; k++)
-                        r *= k;
+                    long r = Calcul(1,n,t);
                     Console.WriteLine(n + "! = " + r);
                 }
                 else
                 {
+                    Console.Write("nombre d'éléments dans le sous ensemble = "); // le sous ensemble
+                    int n = int.Parse(Console.ReadLine()); // saisir le nombre
                     if (c == 2)
                     {
-                        Saisie();
                         // calcul de r
-                        long r = 1;
-                        for (int k = (t - n + 1); k <= t; k++)
-                            r *= k;
-                        //Console.WriteLine("résultat = " + (r1 / r2));
+                        long r = Calcul(2,n,t);
                         Console.WriteLine("A(" + t + "/" + n + ") = " + r);
                     }
                     else
                     {
-                        Saisie();
-                        // calcul de r1
-                        long r1 = 1;
-                        for (int k = (t - n + 1); k <= t; k++)
-                            r1 *= k;
+                        // calcul de r
+                        long r =Calcul(2,n,t);
                         // calcul de r2
-                        long r2 = 1;
-                        for (int k = 1; k <= n; k++)
-                            r2 *= k;
-                        // calcul de r3
-                        //Console.WriteLine("résultat = " + (r1 / r2));
-                        Console.WriteLine("C(" + t + "/" + n + ") = " + (r1 / r2));
+                        long r2 = Calcul(2,n,t);
+                        Console.WriteLine("C(" + t + "/" + n + ") = " + (r / r2));
                     }
                 }
             }
